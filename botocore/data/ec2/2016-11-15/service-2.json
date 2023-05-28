@@ -30156,6 +30156,14 @@
         "PropagationDefaultRouteTableId":{
           "shape":"TransitGatewayRouteTableId",
           "documentation":"<p>The ID of the default propagation route table.</p>"
+        },
+        "AddSharedOwners":{
+          "shape":"TransitGatewaySharedOwnerStringList",
+          "documentation":"<p>Adds the IDs of the AWS accounts with which transit gateway was shared.</p>"
+        },
+        "RemoveSharedOwners":{
+          "shape":"TransitGatewaySharedOwnerStringList",
+          "documentation":"<p>Removes the IDs of the AWS accounts with which transit gateway was shared.</p>"
         }
       },
       "documentation":"<p>The transit gateway options.</p>"
@@ -40522,6 +40530,11 @@
     "TransitGatewayOptions":{
       "type":"structure",
       "members":{
+        "SharedOwners":{
+          "shape":"ValueStringList",
+          "documentation":"<p>The IDs of the AWS accounts with which transit gateway was shared.</p>",
+          "locationName":"sharedOwners"
+        },
         "AmazonSideAsn":{
           "shape":"Long",
           "documentation":"<p>A private Autonomous System Number (ASN) for the Amazon side of a BGP session. The range is 64512 to 65534 for 16-bit ASNs and 4200000000 to 4294967294 for 32-bit ASNs.</p>",
@@ -40770,6 +40783,10 @@
         "TransitGatewayCidrBlocks":{
           "shape":"TransitGatewayCidrBlockStringList",
           "documentation":"<p>One or more IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24 CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>"
+        },
+        "SharedOwners":{
+          "shape":"TransitGatewaySharedOwnerStringList",
+          "documentation":"<p>The IDs of the AWS accounts with which transit gateway was shared.</p>"
         }
       },
       "documentation":"<p>Describes the options for a transit gateway.</p>"
@@ -40987,6 +41004,13 @@
         "static",
         "propagated"
       ]
+    },
+    "TransitGatewaySharedOwnerStringList":{
+      "type":"list",
+      "member":{
+        "shape":"String",
+        "locationName":"item"
+      }
     },
     "TransitGatewayState":{
       "type":"string",
